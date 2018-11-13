@@ -1,0 +1,14 @@
+.DS_Store
+src/.DS_Store
+src/**/.DS_Store
+**/.DS_Store
+.sass-cache
+Desktop.ini
+node_modules
+/env.js
+npm-debug.log
+package-lock.json
+src/styles/app.css
+.env
+src/styles/app.css
+build/
