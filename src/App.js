@@ -9,8 +9,7 @@ import './general.sass'
 import './bootstrap.min.css'
 
 class Loading extends Component { render(){ return null }  }
-// const Page = Loadable({loader: () => import("./path.to/page"), loading: Loading });
-const Home = Loadable({loader: () => import("./containers/HomeContainer"), loading: Loading });
+const Home = Loadable({loader: () => import("./components/Home"), loading: Loading });
 
 class App extends Component {
   render() {
