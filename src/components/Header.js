@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap'
 import './styles/Header.sass'
 import logo from '../../public/assets/logo.svg'
+import AddressSearchContainer from '../containers/AddressSearchContainer'
 
 class Header extends Component {
   render(){
@@ -17,6 +18,7 @@ class Header extends Component {
             </Navbar.Brand>
           </Navbar.Header>
           <Nav>
+            <AddressSearchContainer />
           </Nav>
         </Navbar>
       </div>

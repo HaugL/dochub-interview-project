@@ -1,28 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getBrowserLocation } from '../actions/LocationActions'
+import {
+} from '../actions/LocationActions'
 import FetchComponent from '../utils/FetchComponent'
+import {
+  getCurrentCity
+} from '../reducers/LocationReducer'
 // import './styles/AddressSearchContainer.sass'
 
 class AddressSearchContainer extends FetchComponent {
-  render(){
+  render() {
+    const { city } = this.props
     return (
       <div className='address-search'>
-        Hi
+        { city }
       </div>
     )
   }
 
   fetchData(props, state){
-    props.getBrowserLocation()
   }
 }
 
 const mapStateToProps = (state, props) => ({
+  city: getCurrentCity(state)
 })
 
 const mapDispatchToProps = {
-  getBrowserLocation
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddressSearchContainer)

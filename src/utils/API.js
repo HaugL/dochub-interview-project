@@ -16,7 +16,7 @@ export function requestAPI({method, url, data, qs, success, failure}) {
 
   const params = {
     method,
-    url: `${getURLPrefix()}${url}${queryString || ''}`,
+    url: `${url}${queryString || ''}`,
     headers: {
       'Content-type': 'application/json',
       // 'Authorization': getSession(getState())
@@ -29,7 +29,8 @@ export function requestAPI({method, url, data, qs, success, failure}) {
 
   request(params, function (error, response, body) {
     if(error && error !== 'null'){
-      failure({ ...error, status: response.statusCode })
+      console.log(error)
+      failure({ ...error, status: response ? response.statusCode : 500 })
     } else if(response.statusCode && response.statusCode !== 200){
       let body;
       if(response.body && response.body !== 'null'){

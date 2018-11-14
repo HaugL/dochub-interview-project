@@ -4,6 +4,7 @@
   "description": "React Application",
   "private": true,
   "dependencies": {
+    "@google/maps": "^0.5.5",
     "ajv": "^5.5.2",
     "autoprefixer": "7.1.2",
     "babel-core": "6.25.0",

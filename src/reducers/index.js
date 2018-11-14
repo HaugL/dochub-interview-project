@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
-// import TestReducer from './TestReducer'
+import LocationReducer from './LocationReducer'
 
 const reducers = combineReducers({
-  // 'test': TestReducer || null,
+  'location': LocationReducer || null,
 })
 
 export default reducers
