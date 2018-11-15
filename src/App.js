@@ -14,7 +14,6 @@ const NotFoundPage = Loadable({loader: () => import("./components/NotFoundPage")
 
 class App extends Component {
   render() {
-    console.log("Depoy test")
     return (
         <Provider store={ getStore() }>
           <HttpsRedirect>
