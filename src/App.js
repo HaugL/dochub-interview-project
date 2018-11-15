@@ -10,6 +10,7 @@ import './bootstrap.min.css'
 
 class Loading extends Component { render(){ return null }  }
 const Home = Loadable({loader: () => import("./components/Home"), loading: Loading });
+const NotFoundPage = Loadable({loader: () => import("./components/NotFoundPage"), loading: Loading });
 
 class App extends Component {
   render() {
@@ -29,6 +30,7 @@ class App extends Component {
     return (
       <Router history={ browserHistory } onUpdate={() => window.scrollTo(0, 0)}>
         <Route path="/" component={ Home } />
+        <Route path="*" exact={ true } component={ NotFoundPage } />
       </Router>
     )
   }
