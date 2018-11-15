@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import moment from 'moment'
-import { Row, Col } from 'react-bootstrap'
 import './styles/DayForecast.sass'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import cloudsIcon from '../../public/assets/icons/clouds.svg'
@@ -16,19 +15,23 @@ class Home extends Component {
     const { forecast } = this.props
     return (
       <div className='day-forecast-container'>
-        <Row>
-          <Col xs={6}>
-            <h3>{ moment(forecast.get('date')).format('dddd') }</h3>
-            { forecast.get('description') }
-            <Row className='temp-ranges'>
-              <Col xs={6} className='min-temp'>{Math.floor(forecast.get('minTemp'))}°F</Col>
-              <Col xs={6} className='max-temp'>{Math.floor(forecast.get('maxTemp'))}°F</Col>
-            </Row>
-          </Col>
-          <Col xs={6} className='icon-column'>
+        <div className='row'>
+          <div className='col-xs-6'>
+            <h3 className='day-title'>
+              { moment(forecast.get('date')).format('dddd') }
+            </h3>
+            <div className='weather-description'>
+              { forecast.get('description') }
+            </div>
+            <div className='row temp-ranges'>
+              <div className='col-xs-6 min-temp'>{Math.floor(forecast.get('minTemp'))}°F</div>
+              <div className='max-temp'>{Math.floor(forecast.get('maxTemp'))}°F</div>
+            </div>
+          </div>
+          <div className='col-xs-6 icon-column'>
             <img alt="weather icon" src={ this.getIcon() }/>
-          </Col>
-        </Row>
+          </div>
+        </div>
       </div>
     )
   }
