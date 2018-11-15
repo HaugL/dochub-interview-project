@@ -2,6 +2,7 @@ Running The App
 ===============
 #### Install Node
 Download the latest Node.js and NPM here: https://nodejs.org/en/download/
+
 This app was developed using Node v10.13.0
 
 #### Install dependencies
@@ -9,6 +10,7 @@ Run ```npm install```
 
 #### Start the app
 Run ```npm start```
+
 Navigate to [http://localhost:3000/](http://localhost:3000/)
 
 Building The App
@@ -18,6 +20,7 @@ Run ```npm run-script build```
 
 #### Start the server
 Run ```node server.js```
+
 Navigate to [http://localhost:8080/](http://localhost:8080/)
 
 Testing the App
@@ -26,10 +29,12 @@ Pushing a commit to master automatically runs the linter, all of the tests and t
 
 #### Run the linter
 Run ```npm run eslint```
+
 You cannot deploy when there are linting errors. The current error threshold is set at 0
 
 #### Run tests
 Run ```npm test```
+
 You may need to press the letter a to run all tests after the jest runner loads, depending on the current state of changes
 
 Thought Process While Building The App
