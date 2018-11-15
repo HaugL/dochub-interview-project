@@ -13,6 +13,7 @@ import thunderIcon from '../../public/assets/icons/thunder.svg'
 class Home extends Component {
   render(){
     const { forecast } = this.props
+    const iconInfo = this.getIconInfo()
     return (
       <div className='day-forecast-container'>
         <div className='row'>
@@ -29,31 +30,31 @@ class Home extends Component {
             </div>
           </div>
           <div className='col-xs-6 icon-column'>
-            <img alt="weather icon" src={ this.getIcon() }/>
+            <img className='weather-icon' alt={ iconInfo.alt } src={ iconInfo.source }/>
           </div>
         </div>
       </div>
     )
   }
 
-  getIcon = () => {
+  getIconInfo = () => {
     const { forecast } = this.props
     switch(forecast.get('icon')) {
       case "01":
-        return sunIcon
+        return {source: sunIcon, alt: 'sun icon'}
       case "02":
       case "03":
       case "04":
-        return cloudsIcon
+        return {source: cloudsIcon, alt: 'clouds icon'}
       case "09":
       case "10":
-        return rainIcon
+        return {source: rainIcon, alt: 'rain icon'}
       case "11":
-      return thunderIcon
+      return {source: thunderIcon, alt: 'thunder icon'}
       case "13":
-        return snowIcon
+        return {source: snowIcon, alt: 'snow icon'}
       default:
-        return hazeIcon
+        return {source: hazeIcon, alt: 'haze icon'}
     }
   }
 }

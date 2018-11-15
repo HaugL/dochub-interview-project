@@ -1063,7 +1063,7 @@ export const denverForecast = {
           "id": 800,
           "main": "Clear",
           "description": "clear sky",
-          "icon": "02d"
+          "icon": "01d"
         }
       ],
       "clouds": {

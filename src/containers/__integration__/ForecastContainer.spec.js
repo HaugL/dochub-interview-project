@@ -82,8 +82,8 @@ describe('ForecastContainer', () => {
     })
 
     it('loads correct max temperatures for each date', () => {
-      const minTemps = container.find(DayForecast).find('.max-temp')
-      expect(minTemps.map((f) => f.text())).toEqual([
+      const maxTemps = container.find(DayForecast).find('.max-temp')
+      expect(maxTemps.map((f) => f.text())).toEqual([
         "57°F",
         "57°F",
         "44°F",
@@ -94,14 +94,26 @@ describe('ForecastContainer', () => {
     })
 
     it('loads most severe weather description for each date', () => {
-      const minTemps = container.find(DayForecast).find('.weather-description')
-      expect(minTemps.map((f) => f.text())).toEqual([
+      const descriptions = container.find(DayForecast).find('.weather-description')
+      expect(descriptions.map((f) => f.text())).toEqual([
         "clear sky",
         "scattered clouds",
         "light snow",
         "light snow",
         "clear sky",
         "clear sky",
+      ])
+    })
+
+    it('shows correct weather icon', () => {
+      const icons = container.find(DayForecast).find('.weather-icon')
+      expect(icons.map((f) => f.prop('alt'))).toEqual([
+        "sun icon",
+        "clouds icon",
+        "snow icon",
+        "snow icon",
+        "sun icon",
+        "sun icon",
       ])
     })
   })
