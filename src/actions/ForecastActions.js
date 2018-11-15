@@ -6,9 +6,9 @@ import {
   FORECAST_FAILED
 } from '../utils/Constants'
 
-export function fetchCityForecast(city, coordinates) {
+export function fetchCityForecast(coordinates) {
   return fetchAction({
-    shouldCallAPI: (state) => shouldFetchForecast(state, city) && coordinates,
+    shouldCallAPI: (state) => coordinates && shouldFetchForecast(state, coordinates),
     requestParams: {
       method: 'GET',
       url: 'https://api.openweathermap.org/data/2.5/forecast',
@@ -20,7 +20,7 @@ export function fetchCityForecast(city, coordinates) {
       }
     },
     requestAction: () => { return { type: FORECAST_REQUESTED } },
-    receivedAction: (results) => { return { type: FORECAST_RECIEVED, payload: { results, city} }},
+    receivedAction: (results) => { return { type: FORECAST_RECIEVED, payload: { results, coordinates} }},
     failureAction: (error) => { return { type: FORECAST_FAILED, payload: { error } } }
   });
 }

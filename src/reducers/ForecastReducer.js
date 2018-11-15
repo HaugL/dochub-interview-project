@@ -51,12 +51,16 @@ const ForecastReducer = (state = initialState, action) => {
           }
         }
       })
-      return state.setIn(['values', payload.city], Immutable.fromJS(formattedData))
+      return state.setIn(['values', getValueKeyFromCoordinates(payload.coordinates)], Immutable.fromJS(formattedData))
     },
     [FORECAST_FAILED]: (state) => {
       return state.set('isFetching', false)
     },
   });
+}
+
+const getValueKeyFromCoordinates = (coordinates = {}) => {
+  return `${coordinates.lat},${coordinates.long}`
 }
 
 
@@ -70,7 +74,7 @@ export const shouldFetchForecast = (globalState, city) => {
   }
 }
 
-export const getCityForecast = (globalState, city) => getForecastState(globalState).getIn(['values', city])
+export const getCityForecast = (globalState, coordinates) => getForecastState(globalState).getIn(['values', getValueKeyFromCoordinates(coordinates)])
 
 export const getForecastState = (globalState) => globalState[stateKey];
 export default ForecastReducer

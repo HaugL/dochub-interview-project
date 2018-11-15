@@ -5,7 +5,6 @@ import {
 } from '../actions/ForecastActions'
 import FetchComponent from '../utils/FetchComponent'
 import {
-  getCurrentCity,
   getCurrentCoordinates
 } from '../reducers/LocationReducer'
 import { getCityForecast } from '../reducers/ForecastReducer'
@@ -30,20 +29,18 @@ class ForecastContainer extends FetchComponent {
   fetchData(props, state){
     const {
       fetchCityForecast,
-      city,
       coordinates
     } = props
 
-    fetchCityForecast(city, coordinates)
+    fetchCityForecast(coordinates)
   }
 }
 
 const mapStateToProps = (state, props) => {
-  const city = getCurrentCity(state)
+  const coordinates = getCurrentCoordinates(state)
   return {
-    city,
-    coordinates: getCurrentCoordinates(state),
-    forecast: getCityForecast(state, city)
+    coordinates,
+    forecast: getCityForecast(state, coordinates)
   }
 }
 
