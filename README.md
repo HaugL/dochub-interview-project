@@ -1,4 +1,5 @@
-#Running The App
+Running The App
+===============
 #### Install Node
 Download the latest Node.js and NPM here: https://nodejs.org/en/download/
 This app was developed using Node v10.13.0
@@ -10,7 +11,8 @@ Run ```npm install```
 Run ```npm start```
 Navigate to [http://localhost:3000/](http://localhost:3000/)
 
-#Building The App
+Building The App
+================
 #### Run the build script
 Run ```npm run-script build```
 
@@ -18,7 +20,8 @@ Run ```npm run-script build```
 Run ```node server.js```
 Navigate to [http://localhost:8080/](http://localhost:8080/)
 
-#Testing the App
+Testing the App
+===============
 Pushing a commit to master automatically runs the linter, all of the tests and then deploys to Heroku
 
 #### Run the linter
@@ -29,10 +32,12 @@ You cannot deploy when there are linting errors. The current error threshold is 
 Run ```npm test```
 You may need to press the letter a to run all tests after the jest runner loads, depending on the current state of changes
 
-#Thought Process While Building The App
+Thought Process While Building The App
+======================================
 I wanted to app to be visually appealing, with enough features to show off my understanding of the platform/language, while maintaining the integrity of a production level app all under a time crunch. Understanding the forecast should only take a few seconds and should require a fraction of the users attention. To achieve this goal, I made the interface very simple. The eye is drawn to the day and an enlarged icon, as pictures can tell a bigger story with less attention from the user. I tried to make the application as production ready as possible in the time I had. There is a 404 page, the code is chunked/compressed, there is a loading spinner when data is loading, there are integration tests and the project is hooked up to CI/CD through Codeship and Heroku.
 
-#Tradeoffs + Future Implementations
+Tradeoffs + Future Implementations
+======================================
 The main tradeoff was time for X (features, imperfections, test coverage, etc.). There are a lot of other things I would like to implement, but there are only so many hours in the day, I'm working a full time job and I have a few other interview coding projects in flight. Here's a list of a few things that fell off the bandwagon:
 
 1. Test coverage: there are only two integration tests implemented and I didn't integration test the two main components (the forecast and address search) working together. Since this was time limited, I wanted to show a demonstration of both feature ability and testing.
