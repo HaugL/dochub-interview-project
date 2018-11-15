@@ -15,7 +15,7 @@ const renderContainer = (props, config) => {
 };
 
 describe('AddressSearchContainer', () => {
-  let container, wrapper;
+  let container, wrapper, geocodeRan;
 
   const refreshWrapper = () => {
     wrapper.update()
@@ -23,9 +23,25 @@ describe('AddressSearchContainer', () => {
   }
 
   beforeEach(() => {
-    mockAPI(stubCollection, {
-      ['url']: (config) => denverForecast
-    });
+    geocodeRan = false
+    global.window.google ={
+      maps: {
+        places:{
+          Autocomplete: class {},
+          AutocompleteService:class{},
+          PlacesServiceStatus: {
+            OK: 'OK',
+          },
+        },
+        GeocoderStatus: {
+          OK: 'OK',
+        },
+        Geocoder:class{
+          constructor() { this.maps = {GeocoderStatus: { OK: 'OK' }}}
+          geocode(){ geocodeRan = true }
+        },
+      }
+    };
     ({wrapper} = renderContainer({}, {}))
     container = wrapper.find(AddressSearchContainer)
   })
@@ -36,21 +52,23 @@ describe('AddressSearchContainer', () => {
 
   describe('initial rendering', () => {
     it('renders correct address', () => {
-      expect(container.find("INPUT CLASS").val).toBe('Denver, CO')
+      expect(container.find(".search-input input").prop('value')).toBe('New York, NY')
     })
   })
 
   describe('updating value', () => {
     beforeEach(() => {
-      // code that updates the value and blurs
+      container.find('.search-input input').simulate('change', {target: {value: 'Denver, CO'}});
+      container.find('.search-input input').simulate('blur')
+      refreshWrapper()
     })
 
     it('updates value in input', () => {
-      expect(container.find("INPUT CLASS").value()).toBe('NEW VALUE')
+      expect(container.find(".search-input input").prop('value')).toBe('Denver, CO')
     })
 
     it('queries google for coordinates', () => {
-      expect(container.find("INPUT CLASS").value()).toBe('NEW VALUE')
+      expect(geocodeRan).toBe(true)
     })
   })
 })
