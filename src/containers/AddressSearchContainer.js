@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import {
   fetchCityForecast
 } from '../actions/ForecastActions'
+import {
+  updateCityString,
+  fetchCoordinates
+} from '../actions/LocationActions'
 import FetchComponent from '../utils/FetchComponent'
 import {
-  getCurrentCity,
-  getCurrentCoordinates
+  getCurrentCity
 } from '../reducers/LocationReducer'
-import PlacesAutocomplete, {
-  // geocodeByAddress,
-  // getLatLng,
-} from 'react-places-autocomplete';
+import PlacesAutocomplete from 'react-places-autocomplete';
 import './styles/AddressSearchContainer.sass'
 import searchIcon from '../../public/assets/icons/search.svg'
 
@@ -21,7 +21,7 @@ class AddressSearchContainer extends FetchComponent {
     const inputProps = {
       value: city,
       onChange: this.onAddressChange,
-      onSelect: this.onAddressSelect,
+      onBlur: this.onAddressSelect,
       placeholder: "Delivery address"
     }
     return (
@@ -35,11 +35,11 @@ class AddressSearchContainer extends FetchComponent {
   }
 
   onAddressChange = (result) => {
-
+    this.props.updateCityString(result)
   }
 
   onAddressSelect = (result) => {
-
+    this.props.fetchCoordinates(result.target.value)
   }
 
   fetchData(props, state){
@@ -48,11 +48,12 @@ class AddressSearchContainer extends FetchComponent {
 
 const mapStateToProps = (state, props) => ({
   city: getCurrentCity(state),
-  coordinates: getCurrentCoordinates(state)
 })
 
 const mapDispatchToProps = {
-  fetchCityForecast
+  fetchCityForecast,
+  updateCityString,
+  fetchCoordinates
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddressSearchContainer)

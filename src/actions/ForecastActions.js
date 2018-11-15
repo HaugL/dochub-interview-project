@@ -6,9 +6,9 @@ import {
   FORECAST_FAILED
 } from '../utils/Constants'
 
-export function fetchCityForecast(coordinates) {
+export function fetchCityForecast(coordinates = {}) {
   return fetchAction({
-    shouldCallAPI: (state) => coordinates && shouldFetchForecast(state, coordinates),
+    shouldCallAPI: (state) => Object.keys(coordinates).length > 0 && shouldFetchForecast(state, coordinates),
     requestParams: {
       method: 'GET',
       url: 'https://api.openweathermap.org/data/2.5/forecast',
