@@ -13,6 +13,7 @@ const Home = Loadable({loader: () => import("./components/Home"), loading: Loadi
 const NotFoundPage = Loadable({loader: () => import("./components/NotFoundPage"), loading: Loading });
 
 class App extends Component {
+  console.log("Depoy test")
   render() {
     return (
         <Provider store={ getStore() }>
