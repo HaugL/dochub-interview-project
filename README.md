@@ -1,3 +1,6 @@
+[Live Demo](https://buildit-weather-app-haug.herokuapp.com/)
+===============
+
 Running The App
 ===============
 #### Install Node
