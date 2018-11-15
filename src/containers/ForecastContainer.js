@@ -9,6 +9,7 @@ import {
 } from '../reducers/LocationReducer'
 import { getCityForecast } from '../reducers/ForecastReducer'
 import WeekForecast from '../components/WeekForecast'
+import LoadingSpinner from '../components/LoadingSpinner'
 import './styles/ForecastContainer.sass'
 
 class ForecastContainer extends FetchComponent {
@@ -21,8 +22,12 @@ class ForecastContainer extends FetchComponent {
         </div>
       )
     } else {
-      // show spinner
-      return null
+
+      return (
+        <div className='forecast-container container'>
+          <LoadingSpinner />
+        </div>
+      )
     }
   }
 
