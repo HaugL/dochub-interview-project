@@ -1,8 +1,7 @@
 import React from 'react';
-import { mountComponentWithStore, mockAPI } from '../../test_utils/integration'
+import { mountComponentWithStore } from '../../test_utils/integration'
 import AddressSearchContainer from '../AddressSearchContainer'
 import sinon from 'sinon'
-import Immutable from 'immutable'
 
 const stubCollection = sinon.sandbox.create()
 

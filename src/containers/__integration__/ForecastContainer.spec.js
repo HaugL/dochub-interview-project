@@ -2,7 +2,6 @@ import React from 'react';
 import { mountComponentWithStore, mockAPI } from '../../test_utils/integration'
 import ForecastContainer from '../ForecastContainer'
 import sinon from 'sinon'
-import Immutable from 'immutable'
 import { denverForecast } from '../../test_utils/forecast/schema/denver_forecast'
 import LoadingSpinner from '../../components/LoadingSpinner'
 import DayForecast from '../../components/DayForecast'
@@ -19,11 +18,6 @@ const renderContainer = (props, config) => {
 
 describe('ForecastContainer', () => {
   let container, wrapper;
-
-  const refreshWrapper = () => {
-    wrapper.update()
-    container = wrapper.find(ForecastContainer)
-  }
 
   afterEach(() => {
     stubCollection.restore()
@@ -47,7 +41,7 @@ describe('ForecastContainer', () => {
   describe('when the forecast has loaded', () => {
     beforeEach(() => {
       mockAPI(stubCollection, {
-        ['https://api.openweathermap.org/data/2.5/forecast']: (config) => denverForecast
+        ['https://api.openweathermap.org/data/2.5/forecast']: (config) => denverForecast // eslint-disable-line no-useless-computed-key
       });
       ({wrapper} = renderContainer({}, {}))
       container = wrapper.find(ForecastContainer)
