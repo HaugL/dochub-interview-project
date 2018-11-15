@@ -15,7 +15,7 @@ import './styles/ForecastContainer.sass'
 class ForecastContainer extends FetchComponent {
   render() {
     const { forecast } = this.props
-    if(forecast){
+    if(false){
       return (
         <div className='forecast-container container'>
           <WeekForecast forecast={ forecast }/>

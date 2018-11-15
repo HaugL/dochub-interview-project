@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DayForecast from './DayForecast'
+import ImmutablePropTypes from 'react-immutable-proptypes'
 
 class WeekForecast extends Component {
   render(){
@@ -16,6 +17,10 @@ class WeekForecast extends Component {
       return <DayForecast forecast={f} key={f.get('date')}/>
     }).toJS()
   }
+}
+
+WeekForecast.proptypes = {
+  forecast: ImmutablePropTypes.list.isRequired
 }
 
 export default WeekForecast
