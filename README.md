@@ -52,6 +52,6 @@ The main tradeoff was time for X (features, imperfections, test coverage, etc.).
 
 2. Loading spinner interaction: The loading spinner has a few issues. It isn't smart or patient. It just renders whenever there isn't a forecast to show without thought to the exact interaction that is occurring (loading for the first time vs searching). It also doesn't delay itself so that it only shows when there are longer running queries. This can cause it to flash if you have fast wifi.
 
-3. Pre-population of the address: the ideal interaction with the starting address would be for it to automatically pull your address given your browsers location. I chose searching multiple addresses over this as I felt that would make the app more interactive
+3. Pre-population of the address: the ideal interaction with the starting address would be for it to automatically pull your address given your browsers location. I chose searching multiple addresses over this as I felt that would make the app more interactive.
 
-4. More information about the current days weather. The information that is most important when looking at the weather is what's going on right now and for the rest of the day. I'd love to do a temperature graph or something above the forecast that gives a little more information about the next 12 hours. Something similar to google's weather interface in the search product
+4. More information about the current days weather. The information that is most important when looking at the weather is what's going on right now and for the rest of the day. I'd love to do a temperature graph or something above the forecast that gives a little more information about the next 12 hours. Something similar to google's weather interface in the search product.
