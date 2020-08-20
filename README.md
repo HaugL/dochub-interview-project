@@ -1,4 +1,30 @@
-[Live Demo](https://buildit-weather-app-haug.herokuapp.com/)
+[Live Demo](https://dochub-weather-app.herokuapp.com/)
+
+Project Requirements
+======================================
+**1.  The site is built using a modern javascript framework (eg, ember, angular, react, vue, etc...)**
+This site is built with React and Redux with Jest and Enzyme for testing
+
+**2. The site contains multiple pages (and transitioning between them can be done without reloading the entire page).**
+This site contains two main pages: a weekly forecast and a daily forecast. Transitions between the two are done without reloading the page, using react router. This is important because it reduces the need for duplicative network requests to load the pages and to fetch the API data.
+
+**3. The site demonstrates reusable components and or other types of refactoring.**
+I improved upon this existing project to show both the daily forecast in addition to the existing weekly forecast. I did this by refactoring the existing components to be more generic and resuable. This included a few name changes for the components as well as some classes along with making the input data type agnostic. This way the same components could be used with a simple splitting of logic at the top of the component tree.
+
+**4. The website is responsive**
+This site was designed to be mobile first. It naturally works on all device widths without any grid specifics or media queries.
+
+**5. The site uses and correctly deploys javascript packages**
+This uses the normal React build script with a specific production wepback configuration. [Please see the hosted version here](https://dochub-weather-app.herokuapp.com/ "Please see the hosted version here") for confirmation of correct deployment. Please not that this is hosted on a free Heroku instance and may take a few seconds to load up if the instance is asleep.
+
+**6. The site's loading performance and SEO is optimized**
+I have done the following items to improve SEO
+- Codesplit the various components at the router level to prevent the whole app being loaded vs a single page
+- The production build chunks and compresses via Gzip
+- Images below a certain size are embedded to avoid additional blocking network requests
+
+It is definately not perfect in terms of SEO, though no app usually is. Additional improvements could include further code splitting and reducing the number of dependencies used. If SEO was a high priority item (like for a marketing or content site) for this application, I would not use a client side rendered application like what I've built here. I would either use a server side rendered solution or build a very simple HTML and vanilla JS site to increase speed.
+
 ===============
 
 Running The App
@@ -39,19 +65,3 @@ You cannot deploy when there are linting errors. The current error threshold is 
 Run ```npm test```
 
 You may need to press the letter a to run all tests after the jest runner loads, depending on the current state of changes
-
-Thought Process While Building The App
-======================================
-I wanted to app to be visually appealing, with enough features to show off my understanding of the platform/language, while maintaining the integrity of a production level app all under a time crunch. Understanding the forecast should only take a few seconds and should require a fraction of the users attention. To achieve this goal, I made the interface very simple. The eye is drawn to the day and an enlarged icon, as pictures can tell a bigger story with less attention from the user. I tried to make the application as production ready as possible in the time I had. There is a 404 page, the code is chunked/compressed, there is a loading spinner when data is loading, there are integration tests and the project is hooked up to CI/CD through Codeship and Heroku.
-
-Tradeoffs + Future Implementations
-======================================
-The main tradeoff was time for X (features, imperfections, test coverage, etc.). There are a lot of other things I would like to implement, but there are only so many hours in the day, I'm working a full time job and I have a few other interview coding projects in flight. Here's a list of a few things that fell off the bandwagon:
-
-1. Test coverage: there are only two integration tests implemented and I didn't integration test the two main components (the forecast and address search) working together. Since this was time limited, I wanted to show a demonstration of both feature ability and testing.
-
-2. Loading spinner interaction: The loading spinner has a few issues. It isn't smart or patient. It just renders whenever there isn't a forecast to show without thought to the exact interaction that is occurring (loading for the first time vs searching). It also doesn't delay itself so that it only shows when there are longer running queries. This can cause it to flash if you have fast wifi.
-
-3. Pre-population of the address: the ideal interaction with the starting address would be for it to automatically pull your address given your browsers location. I chose searching multiple addresses over this as I felt that would make the app more interactive.
-
-4. More information about the current days weather. The information that is most important when looking at the weather is what's going on right now and for the rest of the day. I'd love to do a temperature graph or something above the forecast that gives a little more information about the next 12 hours. Something similar to google's weather interface in the search product.
