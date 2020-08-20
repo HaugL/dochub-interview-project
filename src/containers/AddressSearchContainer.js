@@ -22,13 +22,13 @@ class AddressSearchContainer extends FetchComponent {
       value: city,
       onChange: this.onAddressChange,
       onBlur: this.onAddressSelect,
-      placeholder: "Delivery address"
+      placeholder: "City"
     }
     return (
       <div className='address-search container'>
         <div className='search-input'>
           <PlacesAutocomplete inputProps={inputProps} />
-          <img src={searchIcon} alt="search icon"/>
+          <img className='search-icon' src={searchIcon} alt="search icon"/>
         </div>
       </div>
     )
