@@ -36,7 +36,7 @@
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.6",
     "promise": "8.0.1",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.7.2",
     "raven-for-redux": "^1.2.0",
     "raven-js": "^3.22.1",
     "react": "^15.6.1",

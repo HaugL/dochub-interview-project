@@ -12,7 +12,9 @@ export const stateKey = 'forecast'
 let initialState = Immutable.fromJS({
   isFetching: false,
   isStale: false,
-  values: {}
+  values: {
+    daily: {}
+  }
 })
 
 const ForecastReducer = (state = initialState, action) => {
@@ -22,10 +24,11 @@ const ForecastReducer = (state = initialState, action) => {
     },
     [FORECAST_RECIEVED]: (state, { payload }) => {
       state = state.merge({ isFetching: false, isStale: false })
-      const formattedData = {}
+      const formattedWeekData = {}
+      const formattedDailyData = {}
       payload.results.list.forEach((data) => {
         const key = moment(data.dt_txt).format("YYYY-MM-DD")
-        const existingData = formattedData[key]
+        const existingData = formattedWeekData[key]
         const icon = data.weather[0].icon.slice(0,2)
         if(existingData){
           // Find lowest temp
@@ -42,16 +45,34 @@ const ForecastReducer = (state = initialState, action) => {
             existingData.description = data.weather[0].description
           }
         } else {
-          formattedData[key] = {
-            date: key,
+          formattedWeekData[key] = {
+            title: moment(key).format('dddd'),
+            key,
             maxTemp: data.main.temp_max,
             minTemp: data.main.temp_min,
             description: data.weather[0].description,
             icon // See link for docs: https://openweathermap.org/weather-conditions
           }
+
         }
+
+        const timeKey = moment(data.dt_txt).format("h a")
+        formattedDailyData[key] = formattedDailyData[key] || []
+        formattedDailyData[key].push({
+          title: timeKey,
+          key: data.dt_txt,
+          maxTemp: data.main.temp_max,
+          minTemp: data.main.temp_min,
+          description: data.weather[0].description,
+          icon // See link for docs: https://openweathermap.org/weather-conditions
+        })
       })
-      return state.setIn(['values', getValueKeyFromCoordinates(payload.coordinates)], Immutable.fromJS(formattedData))
+      return state.setIn(['values', getValueKeyFromCoordinates(payload.coordinates)],
+        Immutable.fromJS({
+          weekly: formattedWeekData,
+          daily: formattedDailyData
+        })
+      )
     },
     [FORECAST_FAILED]: (state) => {
       return state.set('isFetching', false)
@@ -70,11 +91,12 @@ export const shouldFetchForecast = (globalState, city) => {
   if(state.get('isFetching')){
     return false
   } else {
-    return state.get('isStale') || !getCityForecast(globalState, city)
+    return state.get('isStale') || !getWeeklyCityForecast(globalState, city)
   }
 }
 
-export const getCityForecast = (globalState, coordinates) => getForecastState(globalState).getIn(['values', getValueKeyFromCoordinates(coordinates)])
+export const getWeeklyCityForecast = (globalState, coordinates) => getForecastState(globalState).getIn(['values', getValueKeyFromCoordinates(coordinates), 'weekly'])
+export const getDailyCityForecast = (globalState, coordinates, date) => getForecastState(globalState).getIn(['values', getValueKeyFromCoordinates(coordinates), 'daily', date])
 
 export const getForecastState = (globalState) => globalState[stateKey];
 export default ForecastReducer
