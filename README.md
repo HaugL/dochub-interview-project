@@ -2,8 +2,7 @@
 
 Project Requirements
 ======================================
-**1.  The site is built using a modern javascript framework (eg, ember, angular, react, vue, etc...)**
-This site is built with React and Redux with Jest and Enzyme for testing
+**1.  The site is built using a modern javascript framework (eg, ember, angular, react, vue, etc...)** This site is built with React and Redux with Jest and Enzyme for testing.
 
 **2. The site contains multiple pages (and transitioning between them can be done without reloading the entire page).**
 This site contains two main pages: a weekly forecast and a daily forecast. Transitions between the two are done without reloading the page, using react router. This is important because it reduces the need for duplicative network requests to load the pages and to fetch the API data.
@@ -15,7 +14,7 @@ I improved upon this existing project to show both the daily forecast in additio
 This site was designed to be mobile first. It naturally works on all device widths without any grid specifics or media queries.
 
 **5. The site uses and correctly deploys javascript packages**
-This uses the normal React build script with a specific production wepback configuration. [Please see the hosted version here](https://dochub-weather-app.herokuapp.com/ "Please see the hosted version here") for confirmation of correct deployment. Please not that this is hosted on a free Heroku instance and may take a few seconds to load up if the instance is asleep.
+This uses the normal React build script with a specific production wepback configuration. [Please see the hosted version here](https://dochub-weather-app.herokuapp.com/ "Please see the hosted version here") for confirmation of correct deployment. Please note that this is hosted on a free Heroku instance and may take a few seconds to load up if the instance is asleep.
 
 **6. The site's loading performance and SEO is optimized**
 I have done the following items to improve SEO
