@@ -9,7 +9,7 @@ This site is built with React and Redux with Jest and Enzyme for testing
 This site contains two main pages: a weekly forecast and a daily forecast. Transitions between the two are done without reloading the page, using react router. This is important because it reduces the need for duplicative network requests to load the pages and to fetch the API data.
 
 **3. The site demonstrates reusable components and or other types of refactoring.**
-I improved upon this existing project to show both the daily forecast in addition to the existing weekly forecast. I did this by refactoring the existing components to be more generic and resuable. This included a few name changes for the components as well as some classes along with making the input data type agnostic. This way the same components could be used with a simple splitting of logic at the top of the component tree.
+I improved upon this existing project to show both the daily forecast in addition to the existing weekly forecast. I did this by refactoring the existing components to be more generic and reusable. This included a few name changes for the components as well as some classes along with making the input data type agnostic. This way the same components could be used with a simple splitting of logic at the top of the component tree.
 
 **4. The website is responsive**
 This site was designed to be mobile first. It naturally works on all device widths without any grid specifics or media queries.
