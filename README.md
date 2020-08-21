@@ -22,6 +22,7 @@ I have done the following items to improve SEO
 - Codesplit the various components at the router level to prevent the whole app being loaded vs a single page
 - The production build chunks and compresses via Gzip
 - Images below a certain size are embedded to avoid additional blocking network requests
+- Added basic metadata tags
 
 It is definately not perfect in terms of SEO, though no app usually is. Additional improvements could include further code splitting and reducing the number of dependencies used. If SEO was a high priority item (like for a marketing or content site) for this application, I would not use a client side rendered application like what I've built here. I would either use a server side rendered solution or build a very simple HTML and vanilla JS site to increase speed.
 
